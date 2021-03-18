@@ -203,6 +203,8 @@ namespace Microsoft.Azure.ApplicationInsights.Query
                     Intervals = realBody.Segments?.Select(inter =>
                         new MetricsIntervaledData
                         {
+                            Start = inter.Start,
+                            End = inter.End,
                             Sum = inter.GetSum(),
                             Average = inter.GetAverage(),
                             Min = inter.GetMin(),
@@ -326,7 +328,7 @@ namespace Microsoft.Azure.ApplicationInsights.Query
                 else
                 {
                     result = new MetricsSegmentedData
-                    {
+                    {                        
                         SegmentId = seg.SegmentId,
                         SegmentValue = seg.SegmentValue,
                         Sum = seg.GetSum(),
